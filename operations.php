@@ -5,33 +5,33 @@ function auth($login, $password)
 {
     $file = file_get_contents('user_data.json');
     $data = json_decode($file);
-    if (!empty($data)){
-        foreach ($data as $user){
-            if ($user -> username == $login){
-                if(password_verify($password, $user->passord)){
+    if (!empty($data)) {
+        foreach ($data as $user) {
+            if ($user->login == $login) {
+                if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['user']['login'] = $user->username;
                     $path = 'for.php';
-                    header('Location: '.$path);
+                    header('Location: ' . $path);
+                    var_dump($password);
                     return true;
                 }
             }
 
         }
     }
-    echo "F";
+
+    echo "не угадал";
     return false;
 }
 
 function registration($login, $password, $password_check)
 {
-    if (empty($login))
-    {
-        echo "Введите логин";
+    if (empty($login)) {
+        echo "Хэш пароля: ";
 
     }
-    if ($password != $password_check)
-    {
+    if ($password != $password_check) {
         echo "Пароли не совпадают";
         return false;
     }
@@ -41,7 +41,7 @@ function registration($login, $password, $password_check)
     $allData = json_decode($dataFromFile);
     var_dump($allData);
     foreach ($allData as $user) {
-        if($user -> login == $login){
+        if ($user->login == $login) {
             echo "Логин занят";
             return false;
         }
@@ -53,7 +53,6 @@ function registration($login, $password, $password_check)
     $jsonData = json_encode($allData);
 
     file_put_contents("user_data.json", $jsonData);
-
 
 
 }
