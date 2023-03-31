@@ -11,16 +11,15 @@ function auth($login, $password)
                 if(password_verify($password, $user->passord)){
                     session_start();
                     $_SESSION['user']['login'] = $user->username;
-                    var_dump($_SESSION);
                     $path = 'for.php';
                     header('Location: '.$path);
                     return true;
-
                 }
             }
 
         }
     }
+    echo "F";
     return false;
 }
 

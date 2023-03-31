@@ -1,1 +1,6 @@
-[{"login":"admin","password":"$2y$10$xgfIW4ovNcQ52n9mhBi3ge1egRuV1MQUivHXKwbdBxDKenLVpEnW."},{"login":null,"password":"$2y$10$ATxn7epfn320BIlApMnmNO690dnAyVK9S61t9kzYwwqvzUCJIsxt."}]
+[
+  {
+    "login": "admin",
+    "password": "$2y$10$xgfIW4ovNcQ52n9mhBi3ge1egRuV1MQUivHXKwbdBxDKenLVpEnW."
+  }
+]
