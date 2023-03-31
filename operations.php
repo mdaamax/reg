@@ -3,7 +3,25 @@
 
 function auth($login, $password)
 {
-    var_dump($login, $password);
+    $file = file_get_contents('user_data.json');
+    $data = json_decode($file);
+    if (!empty($data)){
+        foreach ($data as $user){
+            if ($user -> username == $login){
+                if(password_verify($password, $user->passord)){
+                    session_start();
+                    $_SESSION['user']['login'] = $user->username;
+                    var_dump($_SESSION);
+                    $path = 'for.php';
+                    header('Location: '.$path);
+                    return true;
+
+                }
+            }
+
+        }
+    }
+    return false;
 }
 
 function registration($login, $password, $password_check)
